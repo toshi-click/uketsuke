@@ -1,0 +1,114 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'com.google.android.gms.oss-licenses-plugin'
+//apply plugin: 'io.fabric'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'androidx.navigation.safeargs'
+
+// バージョン番号を変数にしたほうがバージョン管理した時わかりやすかった
+def versionMajor = 0
+def versionMinor = 1
+def versionPatch = 0
+
+// 自動リリース向けタイムスタンプを使ってバージョンコードを生成する
+// 必ず増えていかないといけないから。
+// SEE: https://stackoverflow.com/a/38643838
+def versionCodeNow = (int)(new Date().getTime()/10000 - 154277380)
+
+// パッケージ名定数にしておく
+def packageName = "click.toshi.android.uketsuke"
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    dataBinding {
+        enabled = true
+    }
+    defaultConfig {
+        applicationId packageName
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode versionCodeNow
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+        vectorDrawables.useSupportLibrary true
+    }
+    signingConfigs {
+        getByName("debug") {
+            storeFile = rootProject.file("debug.jks")
+            storePassword = "debugdebug"
+            keyAlias = "debugdebug"
+            keyPassword = "debugdebug"
+        }
+        create("release") {
+            storeFile = rootProject.file("release.jks")
+            storePassword = System.getenv("RELEASE_STORE_PASSWORD")
+            keyAlias = System.getenv("RELEASE_KEY_ALIAS")
+            keyPassword = System.getenv("RELEASE_KEY_PASSWORD")
+        }
+    }
+    buildTypes {
+        debug {
+            debuggable true
+            signingConfig signingConfigs.debug
+            applicationIdSuffix '.debug'
+            versionNameSuffix "-debug"
+            testCoverageEnabled !project.hasProperty('android.injected.invoked.from.ide')
+        }
+        release {
+            debuggable false
+            minifyEnabled false
+            useProguard true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        // 定義ファイルの読み込み
+        lintConfig rootProject.file('lint.xml')
+        // issue IDを設定することで、設定したissue IDを無視
+        disable 'InvalidPackage'
+        // falseを設定することで、build中にlintのエラーが出てもbuildを止めないようにする
+        abortOnError false
+        // textReportとtextOutputを設定するとコマンドラインのビルドでlintのwarningやerrorが表示されるので
+        // たとえばCIがlint errorで落ちたときに手元でlintを走らせることなく原因がわかる
+        textReport true
+        textOutput 'stdout'
+    }
+}
+
+dependencies {
+    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
+    kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
+    implementation "androidx.appcompat:appcompat:$rootProject.supportLibraryVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
+    implementation "androidx.core:core-ktx:$rootProject.ktxVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion"
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.recyclerViewVersion"
+    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
+    implementation "androidx.work:work-runtime-ktx:$rootProject.workVersion"
+    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
+    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$rootProject.kotlinVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
+
+    // Testing dependencies
+    androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$rootProject.espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$rootProject.espressoVersion"
+    androidTestImplementation "androidx.test.uiautomator:uiautomator:$rootProject.uiAutomatorVersion"
+    testImplementation "junit:junit:$rootProject.junitVersion"
+}
+// MUST BE AT THE BOTTOM
+// firebaseでgoogle-services.jsonを生成してから有効にすること
+//apply plugin: 'com.google.gms.google-services'

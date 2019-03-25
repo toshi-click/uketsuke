@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <dimen name="photo_size">64dp</dimen>
+    <dimen name="default_margin">8dp</dimen>
+
+    <!-- Text -->
+    <dimen name="text_12sp">12sp</dimen>
+    <dimen name="text_14sp">14sp</dimen>
+    <dimen name="text_16sp">16sp</dimen>
+    <dimen name="text_18sp">18sp</dimen>
+    <dimen name="text_20sp">20sp</dimen>
+    <dimen name="text_22sp">22sp</dimen>
+    <dimen name="text_24sp">24sp</dimen>
+    <dimen name="text_36sp">36sp</dimen>
+    <dimen name="text_48sp">48sp</dimen>
+    <dimen name="text_72sp">72sp</dimen>
+    <dimen name="text_88sp">88sp</dimen>
+
+    <!-- Margin -->
+    <dimen name="margin_large">32dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+
+    <!-- Space -->
+    <dimen name="space_4dp">4dp</dimen>
+    <dimen name="space_8dp">8dp</dimen>
+    <dimen name="space_12dp">12dp</dimen>
+    <dimen name="space_16dp">16dp</dimen>
+    <dimen name="space_24dp">24dp</dimen>
+    <dimen name="space_32dp">32dp</dimen>
+
+    <!-- Line Space -->
+    <dimen name="line_space_1dp">1dp</dimen>
+    <dimen name="line_space_2dp">2dp</dimen>
+
+    <!-- Line -->
+    <dimen name="line_1dp">1dp</dimen>
+    <dimen name="line_2dp">2dp</dimen>
+
+    <!-- Border -->
+    <dimen name="border_1dp">1dp</dimen>
+    <dimen name="border_2dp">2dp</dimen>
+
+    <!-- Radius -->
+    <dimen name="radius_1dp">1dp</dimen>
+    <dimen name="radius_2dp">2dp</dimen>
+    <dimen name="radius_4dp">4dp</dimen>
+    <dimen name="radius_8dp">8dp</dimen>
+    <dimen name="radius_10dp">10dp</dimen>
+    <dimen name="radius_12dp">12dp</dimen>
+
+
+    <!-- Per Material Design specs: -->
+    <!-- https://material.io/design/components/buttons-floating-action-button.html#specs -->
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!-- Padding on the bottom of a screen so that the FAB won't overlap scrolled text. -->
+    <dimen name="fab_bottom_padding">72dp</dimen>
+
+    <dimen name="app_bar_height">200dp</dimen>
+
+    <dimen name="margin_normal">16dp</dimen>
+
+    <dimen name="plant_item_image_height">100dp</dimen>
+
+    <dimen name="navigation_drawer_header_height">192dp</dimen>
+    <dimen name="navigation_drawer_header_padding">16dp</dimen>
+    <dimen name="navigation_drawer_image_width">100dp</dimen>
+</resources>

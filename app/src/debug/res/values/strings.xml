@@ -1,0 +1,5 @@
+<resources>
+    <!-- ビルド環境毎に変える変数 -->
+    <string name="app_name">[Dev]受付くん</string>
+    <string name="api_base_url">https://exmple.com</string>
+</resources>

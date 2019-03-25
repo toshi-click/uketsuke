@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Android N(6)で追加された-->
+<!--アプリでSSLサーバ証明書の検証不備が多すぎた対策-->
+<!--http://blog.riskfinder.co.jp/2016/03/network-security-configuration-android-n.html-->
+<!--https://developer.android.com/training/articles/security-config.html?hl=ja-->
+<!--オレオレ証明書を使うときとかに使える-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+                <!-- add more config here-->
+    </base-config>
+</network-security-config>
