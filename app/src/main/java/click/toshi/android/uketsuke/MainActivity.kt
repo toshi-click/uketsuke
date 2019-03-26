@@ -11,7 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import click.toshi.android.uketsuke.databinding.ActivityGardenBinding
+import click.toshi.android.uketsuke.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding: ActivityGardenBinding = DataBindingUtil.setContentView(this,
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this,
                 R.layout.activity_main)
         drawerLayout = binding.drawerLayout
 
