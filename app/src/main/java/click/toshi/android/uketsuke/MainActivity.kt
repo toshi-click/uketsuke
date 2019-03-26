@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val binding: ActivityGardenBinding = DataBindingUtil.setContentView(this,
-                R.layout.activity_garden)
+                R.layout.activity_main)
         drawerLayout = binding.drawerLayout
 
         navController = Navigation.findNavController(this, R.id.garden_nav_fragment)
